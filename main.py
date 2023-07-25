@@ -4,6 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import csv
+from cafe import Cafe
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -29,6 +30,12 @@ def home():
     return render_template("index.html")
 
 
+# all Flask routes below
+@app.route("/home")
+def index():
+    home()
+
+
 @app.route('/add')
 def add_cafe():
     form = CafeForm()
@@ -42,12 +49,10 @@ def add_cafe():
 
 @app.route('/cafes')
 def cafes():
-    with open('cafe-data.csv', newline='') as csv_file:
-        csv_data = csv.reader(csv_file, delimiter=',')
-        list_of_rows = []
-        for row in csv_data:
-            list_of_rows.append(row)
-    return render_template('cafes.html', cafes=list_of_rows)
+    cafe_instance = Cafe()
+    cafes = cafe_instance.get_all_cafes()
+    cafes_header = cafe_instance.get_all_cafes_headers()
+    return render_template('cafes.html', cafes=cafes, cafes_header=cafes_header)
 
 
 if __name__ == '__main__':

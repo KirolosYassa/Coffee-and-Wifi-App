@@ -1,5 +1,6 @@
 /* This CSS file will need to be added to the styling of 
 your web pages for the styles to be rendered. */
+
 body {
   background-color: #333;
   color: white;
@@ -15,14 +16,17 @@ a {
   justify-content: center;
   height: 100vh;
   color: white;
+  // background-color: #333;
   text-align: center;
   margin: auto;
-}
-.jumbotron h1 {
-  font-size: 4rem;
-}
-.jumbotron p {
-  font-size: 1.5rem;
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
 }
 
 .space-above {
@@ -32,4 +36,4 @@ a {
 
 table {
   text-align: left;
-}/*# sourceMappingURL=styles.css.map */
+}
